@@ -13,7 +13,7 @@ const afterItems = [
 export function BeforeAfter() {
   return (
     <section
-      id="before-after"
+      id="brand-guidelines"
       className="bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
       aria-label="Before and after comparison"
     >

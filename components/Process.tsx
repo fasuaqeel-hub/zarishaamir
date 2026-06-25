@@ -1,30 +1,30 @@
 const steps = [
   {
-    title: "Tell me about your brand",
+    title: "Discover Your Brand",
     description:
-      "Fill in the enquiry form and share who you are, what you're building, and what you need. We'll then hop on a call to discuss the scope and direction of the project.",
+      "We start by understanding your business, goals, and audience. Whether you already have an identity or we're building one from scratch, this step gives us clarity before any design begins.",
   },
   {
-    title: "Build the brand foundation",
+    title: "Creative Direction",
     description:
-      "Based on clear creative direction, logo concepts, colors, typography, and supporting assets are created to make sure everything connects back to the bigger picture of your business.",
+      "Together, we decide the visual direction by exploring ideas based on your brand needs. This could include refining an existing brand, creating a logo system and other brand assets from scratch, or developing merchandise.",
   },
   {
-    title: "Create merch people connect with",
+    title: "Design & Development",
     description:
-      "Once the brand foundation is in place, we develop merch concepts and refine them into designs that feel intentional and aligned with your brand. If you already have a brand, we first understand your identity and audience to make sure the merch resonates.",
+      "With a clear direction in place, every element from logo systems and brand assets to merchandise is designed to create a cohesive brand that connects with your audience.",
   },
   {
-    title: "Launch with everything ready to use",
+    title: "Delivery & Launch",
     description:
-      "Receive logos, brand assets, guidelines, and merch files prepared for digital use and print, ready for you and your team to use with confidence.",
+      "You'll receive organized, production-ready files along with clear brand guidelines and everything needed to confidently launch or expand your brand.",
   },
 ];
 
 export function Process() {
   return (
     <section
-      id="process"
+      id="logo-systems"
       className="relative overflow-hidden border-y border-purple/10 bg-periwinkle/10 px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
       aria-labelledby="process-heading"
     >
@@ -35,16 +35,13 @@ export function Process() {
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto mb-9 max-w-2xl text-center sm:mb-11">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">The process</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">THE PROCESS</p>
           <h2
             id="process-heading"
             className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl"
           >
-            From Idea to <span className="text-purple">Ready to Launch</span>
+            A clear process from brand discovery to launch.
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/65">
-            A simple path from first enquiry to final files, so you always know what happens next.
-          </p>
         </div>
 
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

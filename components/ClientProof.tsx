@@ -1,62 +1,209 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const testimonials = [
   {
     quote:
-      "Love the structured approach. This level of organization is exactly why I wanted you on the team.",
-    label: "Process",
+      "Working with Zarish was one of the best choices I've made for my shop. She didn't just design a logo, she took the time to understand my vision and turned it into something even better than I imagined. Every detail felt intentional and true to my brand.",
+    name: "Zarmeen",
+    role: "Former Kittl Creator \u2022 Print-On-Demand Specialist",
+    initials: "Z",
   },
   {
-    quote: "Really appreciated the tee designs. Quality work all the way through.",
-    label: "Merch Design",
+    quote:
+      "Zarish created a wide range of product mockups for our apparel brand over several months. She consistently delivered high-quality work, was responsive to feedback, and showed genuine flexibility as our workflow evolved. She's detail-oriented, communicates clearly, and takes constructive feedback positively. Highly recommend for anyone needing mockup design or similar creative work.",
+    name: "Kai Judd",
+    role: "Founder & Marketing Lead, Selfawear",
+    initials: "KJ",
   },
   {
-    quote: "Your eye for detail and feedback during the logo design process, lovin it.",
-    label: "Brand Identity",
+    quote:
+      "Great to work with on my streetwear brand logo and merch. I love how she turned my vision into designs, and the structured process made the entire project smooth from start to finish.",
+    name: "Nabil Alawadi",
+    role: "Founder, Solara Unlimited",
+    initials: "NA",
   },
 ];
 
 export function ClientProof() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [cardsPerView, setCardsPerView] = useState(1);
+
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setCardsPerView(3);
+        return;
+      }
+
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        setCardsPerView(2);
+        return;
+      }
+
+      setCardsPerView(1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    setSelectedIndex((currentIndex) => {
+      if (currentIndex === null) {
+        return null;
+      }
+
+      return Math.min(currentIndex, testimonials.length - 1);
+    });
+  }, [cardsPerView]);
+
+  const selectCard = (cardIndex: number) => {
+    const track = trackRef.current;
+    const card = track?.children[cardIndex] as HTMLElement | undefined;
+
+    setHasInteracted(true);
+    setSelectedIndex(cardIndex);
+
+    if (card) {
+      card.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    const track = trackRef.current;
+
+    if (!track || !hasInteracted) {
+      return;
+    }
+
+    const cards = Array.from(track.children) as HTMLElement[];
+    const closestIndex = cards.reduce((closest, card, index) => {
+      const currentDistance = Math.abs(card.offsetLeft - track.scrollLeft);
+      const closestDistance = Math.abs(cards[closest].offsetLeft - track.scrollLeft);
+
+      return currentDistance < closestDistance ? index : closest;
+    }, 0);
+
+    setSelectedIndex(closestIndex);
+  };
+
+  const selectedDotIndex = selectedIndex ?? -1;
+
   return (
     <section
-      id="client-proof"
-      className="bg-paper px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10"
-      aria-labelledby="client-proof-heading"
+      id="brand-identity"
+      className="bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
+      aria-labelledby="client-testimonials-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mb-7 flex items-end justify-between gap-6 border-t border-purple/15 pt-8 sm:mb-8">
-          <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">Client proof</p>
-            <h2
-              id="client-proof-heading"
-              className="max-w-2xl text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl"
-            >
-              What clients have said while working together
-            </h2>
-          </div>
-          <div className="hidden h-px w-24 bg-lilac sm:block" aria-hidden="true" />
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">
+            CLIENT TESTIMONIALS
+          </p>
+          <h2
+            id="client-testimonials-heading"
+            className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl"
+          >
+            The experience behind every project
+          </h2>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {testimonials.map(({ quote, label }) => (
-            <figure
-              key={label}
-              className="flex min-h-44 flex-col justify-between rounded-2xl border border-periwinkle bg-periwinkle/10 p-5 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-lilac hover:bg-paper sm:p-6"
+        <div className="mt-10 sm:mt-12">
+          <div
+            ref={trackRef}
+            onScroll={handleScroll}
+            onPointerDown={() => setHasInteracted(true)}
+            className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-1 py-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-live="polite"
+          >
+            {testimonials.map(({ quote, name, role, initials }, index) => {
+              const isActive = selectedIndex === index;
+
+              return (
+                <figure
+                  key={name}
+                  onClick={() => selectCard(index)}
+                  className={`flex min-h-[22rem] shrink-0 basis-full snap-start flex-col rounded-2xl border bg-paper p-6 transition duration-200 sm:p-7 md:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)] ${
+                    isActive
+                      ? "-translate-y-0.5 border-lilac bg-[#fffdfb] shadow-[0_24px_60px_rgba(74,59,143,0.16)]"
+                      : "border-periwinkle/45 bg-[#fffdfb]/80 shadow-[0_14px_38px_rgba(74,59,143,0.06)] hover:border-lilac/45 hover:shadow-card"
+                  }`}
+                >
+                  <blockquote className="flex-1 text-[0.97rem] leading-[1.75] text-ink/72">
+                    <span className="mr-1 font-bold text-lilac" aria-hidden="true">
+                      &ldquo;
+                    </span>
+                    {quote}
+                    <span className="ml-1 font-bold text-lilac" aria-hidden="true">
+                      &rdquo;
+                    </span>
+                  </blockquote>
+
+                  <figcaption className="mt-8 flex items-center gap-3 border-t border-purple/10 pt-5">
+                  <div
+                    className="grid size-11 shrink-0 place-items-center rounded-full border border-lilac/35 bg-periwinkle/15 text-sm font-bold text-purple"
+                    aria-label={`${name} avatar placeholder`}
+                  >
+                      {initials}
+                    </div>
+                    <div>
+                      <p className="font-bold leading-tight text-ink">{name}</p>
+                      <p className="mt-1 text-xs font-semibold leading-relaxed text-ink/55">{role}</p>
+                    </div>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+
+          <div className="mt-4 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => selectCard(selectedIndex === null ? 0 : Math.max(0, selectedIndex - 1))}
+              disabled={selectedIndex === 0}
+              className="grid size-9 place-items-center rounded-full border border-purple/15 bg-paper text-lg font-bold text-purple shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-lilac hover:bg-lilac/10 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-purple/15 disabled:hover:bg-paper"
+              aria-label="Show previous testimonials"
             >
-              <blockquote className="text-[0.95rem] leading-relaxed text-ink/75">
-                <span className="mr-1 font-bold text-lilac" aria-hidden="true">
-                  “
-                </span>
-                {quote}
-                <span className="ml-1 font-bold text-lilac" aria-hidden="true">
-                  ”
-                </span>
-              </blockquote>
-              <figcaption className="mt-6">
-                <span className="inline-flex rounded-full border border-purple/15 bg-paper px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-purple">
-                  {label}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
+              <span aria-hidden="true">&lsaquo;</span>
+            </button>
+
+            <div className="flex items-center gap-2" aria-label="Testimonial carousel pagination">
+              {testimonials.map(({ name }, index) => (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => selectCard(index)}
+                  className={`size-2.5 rounded-full transition duration-200 ${
+                    selectedDotIndex === index ? "bg-purple" : "bg-purple/20 hover:bg-lilac"
+                  }`}
+                  aria-label={`Show testimonial from ${name}`}
+                  aria-current={selectedDotIndex === index ? "true" : undefined}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() =>
+                selectCard(selectedIndex === null ? 0 : Math.min(testimonials.length - 1, selectedIndex + 1))
+              }
+              disabled={selectedIndex === testimonials.length - 1}
+              className="grid size-9 place-items-center rounded-full border border-purple/15 bg-paper text-lg font-bold text-purple shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-lilac hover:bg-lilac/10 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-purple/15 disabled:hover:bg-paper"
+              aria-label="Show next testimonials"
+            >
+              <span aria-hidden="true">&rsaquo;</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

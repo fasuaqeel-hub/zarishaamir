@@ -8,7 +8,7 @@ const projects = [
 
 export function FeaturedWork() {
   return (
-    <section id="featured-work" className="bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24" aria-label="Featured work">
+    <section id="custom-merch" className="bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24" aria-label="Featured work">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <SectionHeading
