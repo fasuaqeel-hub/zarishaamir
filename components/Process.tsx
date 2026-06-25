@@ -44,17 +44,29 @@ export function Process() {
           </h2>
         </div>
 
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6 lg:mt-16">
+          <div
+            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gradient-to-b from-periwinkle via-purple/35 to-periwinkle md:left-0 md:right-0 md:top-5 md:h-px md:w-auto md:bg-gradient-to-r"
+            aria-hidden="true"
+          />
           {steps.map(({ title, description }, index) => (
             <li
               key={title}
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-purple/15 bg-paper p-5 shadow-card transition duration-200 before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-lilac before:opacity-0 before:transition-opacity hover:-translate-y-1 hover:border-lilac hover:shadow-lift hover:before:opacity-100 sm:p-6"
+              className={`group relative flex gap-5 pl-12 md:block md:pl-0 ${
+                index % 2 ? "md:pt-16" : "md:pt-0"
+              }`}
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-purple text-sm font-bold text-paper transition-colors group-hover:bg-lilac group-hover:text-ink">
-                {index + 1}
-              </span>
-              <h3 className="mt-5 text-lg font-bold leading-snug tracking-tight text-ink">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink/65">{description}</p>
+              <div className="absolute left-0 top-0 md:relative md:left-auto md:top-auto md:mb-7 md:flex md:justify-center">
+                <span className="grid size-9 place-items-center rounded-full border border-lilac/45 bg-purple text-sm font-bold text-paper shadow-[0_12px_30px_rgba(74,59,143,0.18)] transition-colors group-hover:bg-lilac group-hover:text-ink">
+                  {index + 1}
+                </span>
+              </div>
+
+              <div className="max-w-xl md:mx-auto md:max-w-[15rem] md:text-center">
+                <span className="mb-3 block h-px w-12 bg-lilac/70 md:mx-auto" aria-hidden="true" />
+                <h3 className="text-lg font-bold leading-snug tracking-tight text-ink">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/65">{description}</p>
+              </div>
             </li>
           ))}
         </ol>
