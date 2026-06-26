@@ -1,4 +1,3 @@
-import { BeforeAfter } from "@/components/BeforeAfter";
 import { ClientProof } from "@/components/ClientProof";
 import { FAQ } from "@/components/FAQ";
 import { FeaturedWork } from "@/components/FeaturedWork";
@@ -12,9 +11,8 @@ export default function Home() {
       <Hero />
       <ClientProof />
       <Process />
-      <FeaturedWork />
-      <BeforeAfter />
       <FAQ />
+      <FeaturedWork />
       <FinalCTA />
     </main>
   );

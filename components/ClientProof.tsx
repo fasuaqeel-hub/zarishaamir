@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const testimonials = [
   {
     quote:
-      "Working with Zarish was one of the best choices I've made for my shop. She didn't just design a logo, she took the time to understand my vision and turned it into something even better than I imagined. Every detail felt intentional and true to my brand.",
+      "Working with Zarish was one of the best choices I've made for my shop. She didn't just design a logo—she got me. She really listened, took the time to understand my vision, and somehow turned it into something even better than I imagined. Every detail, from the logo to the full shop vibe, felt so intentional and true to my brand. Clean, creative, and totally me. Love love love her work. If you're thinking about branding your store or just want your visuals to feel more 'you,' I honestly can't recommend Zarish enough. She's insanely talented, so easy to work with, and truly wants your brand to shine.",
     name: "Zarmeen",
     role: "Former Kittl Creator \u2022 Print-On-Demand Specialist",
     initials: "Z",
@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "Great to work with on my streetwear brand logo and merch. I love how she turned my vision into designs, and the structured process made the entire project smooth from start to finish.",
+      "Great to work with Zarish on my streetwear brand logo and merch. Lovin' how she turned my vision into design. Also, I love the structured process all the way through.",
     name: "Nabil Alawadi",
     role: "Founder, Solara Unlimited",
     initials: "NA",
@@ -139,15 +139,19 @@ export function ClientProof() {
                       : "border-periwinkle/45 bg-[#fffdfb]/80 shadow-[0_14px_38px_rgba(74,59,143,0.06)] hover:border-lilac/45 hover:shadow-card"
                   }`}
                 >
-                  <blockquote className="flex-1 text-[0.97rem] leading-[1.75] text-ink/72">
-                    <span className="mr-1 font-bold text-lilac" aria-hidden="true">
-                      &ldquo;
-                    </span>
-                    {quote}
-                    <span className="ml-1 font-bold text-lilac" aria-hidden="true">
-                      &rdquo;
-                    </span>
-                  </blockquote>
+                  <div className="flex-1">
+                    <div className="h-[10.5rem] overflow-y-auto scroll-smooth pr-2 text-[0.97rem] leading-[1.75] text-ink/72 [scrollbar-color:#4A3B8F_rgba(183,187,241,0.22)] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-purple [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-periwinkle/20">
+                      <blockquote>
+                        <span className="mr-1 font-bold text-lilac" aria-hidden="true">
+                          &ldquo;
+                        </span>
+                        {quote}
+                        <span className="ml-1 font-bold text-lilac" aria-hidden="true">
+                          &rdquo;
+                        </span>
+                      </blockquote>
+                    </div>
+                  </div>
 
                   <figcaption className="mt-8 flex items-center gap-3 border-t border-purple/10 pt-5">
                   <div
