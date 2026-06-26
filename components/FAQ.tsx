@@ -30,27 +30,30 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="border-y border-purple/10 bg-periwinkle/10 px-5 py-16 sm:px-8 sm:py-20" aria-label="Frequently asked questions">
+    <section id="faqs" className="scroll-mt-28 border-y border-border bg-cream px-5 py-16 sm:px-8 sm:py-20" aria-label="Frequently asked questions">
+      <span id="faq" className="block scroll-mt-28" aria-hidden="true" />
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           eyebrow="FAQs"
           title="What clients often ask"
         />
 
-        <div className="overflow-hidden rounded-2xl border border-purple/15 bg-paper shadow-card">
+        <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-card">
           {questions.map((item, index) => (
-            <div key={item.question} className={index ? "border-t border-purple/10" : ""}>
+            <div key={item.question} className={index ? "border-t border-border" : ""}>
               <button
                 type="button"
-                className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left sm:px-6"
+                className={`flex w-full items-center justify-between gap-6 px-5 py-5 text-left transition duration-200 sm:px-6 ${
+                  openIndex === index ? "bg-cream" : "hover:bg-mint/35"
+                }`}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
                 <h3 className="font-semibold text-ink">{item.question}</h3>
                 <span
-                  className={`grid size-8 shrink-0 place-items-center rounded-full bg-periwinkle/25 text-lg text-purple transition duration-200 ${
-                    openIndex === index ? "rotate-45" : ""
+                  className={`grid size-8 shrink-0 place-items-center rounded-full text-lg transition duration-200 ${
+                    openIndex === index ? "rotate-45 bg-accent text-white" : "bg-mint/45 text-accent"
                   }`}
                   aria-hidden="true"
                 >
@@ -65,7 +68,7 @@ export function FAQ() {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="px-5 pb-5 text-base leading-relaxed text-ink/65 sm:px-6">{item.answer}</p>
+                  <p className="px-5 pb-5 text-base leading-relaxed text-muted sm:px-6">{item.answer}</p>
                 </div>
               </div>
             </div>

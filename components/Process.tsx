@@ -24,18 +24,17 @@ const steps = [
 export function Process() {
   return (
     <section
-      id="logo-systems"
-      className="relative overflow-hidden border-y border-purple/10 bg-periwinkle/10 px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
+      id="process"
+      className="relative scroll-mt-28 overflow-hidden border-y border-border bg-cream px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
       aria-labelledby="process-heading"
     >
-      <div
-        className="pointer-events-none absolute -right-32 top-4 size-72 rounded-full bg-lilac/15 blur-[75px]"
-        aria-hidden="true"
-      />
+      <span id="logo-systems" className="block scroll-mt-28" aria-hidden="true" />
+      <span id="brand-guidelines" className="block scroll-mt-28" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-16 top-8 size-28 rounded-full bg-mint/55" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto mb-9 max-w-2xl text-center sm:mb-11">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">THE PROCESS</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-accent">THE PROCESS</p>
           <h2
             id="process-heading"
             className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl"
@@ -46,7 +45,7 @@ export function Process() {
 
         <ol className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6 lg:mt-16">
           <div
-            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-gradient-to-b from-periwinkle via-purple/35 to-periwinkle md:left-0 md:right-0 md:top-5 md:h-px md:w-auto md:bg-gradient-to-r"
+            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-mint md:left-0 md:right-0 md:top-5 md:h-px md:w-auto"
             aria-hidden="true"
           />
           {steps.map(({ title, description }, index) => (
@@ -57,15 +56,15 @@ export function Process() {
               }`}
             >
               <div className="absolute left-0 top-0 md:relative md:left-auto md:top-auto md:mb-7 md:flex md:justify-center">
-                <span className="grid size-9 place-items-center rounded-full border border-lilac/45 bg-purple text-sm font-bold text-paper shadow-[0_12px_30px_rgba(74,59,143,0.18)] transition-colors group-hover:bg-lilac group-hover:text-ink">
+                <span className="grid size-9 place-items-center rounded-full border border-accent bg-accent text-sm font-bold text-white shadow-card transition-colors group-hover:bg-pink group-hover:text-white">
                   {index + 1}
                 </span>
               </div>
 
               <div className="max-w-xl md:mx-auto md:max-w-[15rem] md:text-center">
-                <span className="mb-3 block h-px w-12 bg-lilac/70 md:mx-auto" aria-hidden="true" />
+                <span className="mb-3 block h-px w-12 bg-pink/55 md:mx-auto" aria-hidden="true" />
                 <h3 className="text-lg font-bold leading-snug tracking-tight text-ink">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/65">{description}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{description}</p>
               </div>
             </li>
           ))}

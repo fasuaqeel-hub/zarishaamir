@@ -101,13 +101,14 @@ export function ClientProof() {
 
   return (
     <section
-      id="brand-identity"
-      className="bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
+      id="testimonials"
+      className="scroll-mt-28 bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
       aria-labelledby="client-testimonials-heading"
     >
+      <span id="brand-identity" className="block scroll-mt-28" aria-hidden="true" />
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-purple">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-accent">
             CLIENT TESTIMONIALS
           </p>
           <h2
@@ -135,27 +136,27 @@ export function ClientProof() {
                   onClick={() => selectCard(index)}
                   className={`flex min-h-[22rem] shrink-0 basis-full snap-start flex-col rounded-2xl border bg-paper p-6 transition duration-200 sm:p-7 md:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)] ${
                     isActive
-                      ? "-translate-y-0.5 border-lilac bg-[#fffdfb] shadow-[0_24px_60px_rgba(74,59,143,0.16)]"
-                      : "border-periwinkle/45 bg-[#fffdfb]/80 shadow-[0_14px_38px_rgba(74,59,143,0.06)] hover:border-lilac/45 hover:shadow-card"
+                      ? "-translate-y-0.5 border-accent bg-white shadow-card"
+                      : "border-border bg-white shadow-card hover:border-accent hover:bg-mint/20"
                   }`}
                 >
                   <div className="flex-1">
-                    <div className="h-[10.5rem] overflow-y-auto scroll-smooth pr-2 text-[0.97rem] leading-[1.75] text-ink/72 [scrollbar-color:#4A3B8F_rgba(183,187,241,0.22)] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-purple [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-periwinkle/20">
+                    <div className="h-[10.5rem] overflow-y-auto scroll-smooth pr-2 text-[0.97rem] leading-[1.75] text-muted [scrollbar-color:#355F69_#D8E7DF] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-accent [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-mint">
                       <blockquote>
-                        <span className="mr-1 font-bold text-lilac" aria-hidden="true">
+                        <span className="mr-1 font-bold text-pink" aria-hidden="true">
                           &ldquo;
                         </span>
                         {quote}
-                        <span className="ml-1 font-bold text-lilac" aria-hidden="true">
+                        <span className="ml-1 font-bold text-pink" aria-hidden="true">
                           &rdquo;
                         </span>
                       </blockquote>
                     </div>
                   </div>
 
-                  <figcaption className="mt-8 flex items-center gap-3 border-t border-purple/10 pt-5">
+                  <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-5">
                   <div
-                    className="grid size-11 shrink-0 place-items-center rounded-full border border-lilac/35 bg-periwinkle/15 text-sm font-bold text-purple"
+                    className="grid size-11 shrink-0 place-items-center rounded-full border border-border bg-mint text-sm font-bold text-accent"
                     aria-label={`${name} avatar placeholder`}
                   >
                       {initials}
@@ -175,7 +176,7 @@ export function ClientProof() {
               type="button"
               onClick={() => selectCard(selectedIndex === null ? 0 : Math.max(0, selectedIndex - 1))}
               disabled={selectedIndex === 0}
-              className="grid size-9 place-items-center rounded-full border border-purple/15 bg-paper text-lg font-bold text-purple shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-lilac hover:bg-lilac/10 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-purple/15 disabled:hover:bg-paper"
+              className="grid size-9 place-items-center rounded-full border border-border bg-white text-lg font-bold text-accent shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-mint disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-border disabled:hover:bg-white"
               aria-label="Show previous testimonials"
             >
               <span aria-hidden="true">&lsaquo;</span>
@@ -188,7 +189,7 @@ export function ClientProof() {
                   type="button"
                   onClick={() => selectCard(index)}
                   className={`size-2.5 rounded-full transition duration-200 ${
-                    selectedDotIndex === index ? "bg-purple" : "bg-purple/20 hover:bg-lilac"
+                    selectedDotIndex === index ? "bg-pink" : "bg-mint hover:bg-accent/45"
                   }`}
                   aria-label={`Show testimonial from ${name}`}
                   aria-current={selectedDotIndex === index ? "true" : undefined}
@@ -202,7 +203,7 @@ export function ClientProof() {
                 selectCard(selectedIndex === null ? 0 : Math.min(testimonials.length - 1, selectedIndex + 1))
               }
               disabled={selectedIndex === testimonials.length - 1}
-              className="grid size-9 place-items-center rounded-full border border-purple/15 bg-paper text-lg font-bold text-purple shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-lilac hover:bg-lilac/10 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-purple/15 disabled:hover:bg-paper"
+              className="grid size-9 place-items-center rounded-full border border-border bg-white text-lg font-bold text-accent shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-mint disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:translate-y-0 disabled:hover:border-border disabled:hover:bg-white"
               aria-label="Show next testimonials"
             >
               <span aria-hidden="true">&rsaquo;</span>

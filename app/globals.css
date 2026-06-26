@@ -16,8 +16,8 @@ html {
 
 body {
   margin: 0;
-  background: #f8f5f3;
-  color: #050315;
+  background: #f8f8f6;
+  color: #111111;
   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -28,8 +28,8 @@ a {
 }
 
 ::selection {
-  background: #cd9af5;
-  color: #050315;
+  background: #d866c3;
+  color: #111111;
 }
 
 @media (prefers-reduced-motion: reduce) {

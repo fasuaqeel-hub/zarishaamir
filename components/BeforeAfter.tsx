@@ -25,10 +25,10 @@ export function BeforeAfter() {
         />
 
         <div className="mx-auto mt-9 grid max-w-5xl gap-4 md:grid-cols-2 sm:mt-11">
-          <article className="flex h-full flex-col rounded-3xl border border-periwinkle bg-periwinkle/10 p-6 shadow-card sm:p-8">
-            <div className="flex items-center gap-3 border-b border-purple/10 pb-5">
+          <article className="flex h-full flex-col rounded-3xl border border-border bg-mint/20 p-6 shadow-card sm:p-8">
+            <div className="flex items-center gap-3 border-b border-border pb-5">
               <span
-                className="grid size-8 place-items-center rounded-full border border-purple/15 bg-paper text-sm font-bold text-ink/45"
+                className="grid size-8 place-items-center rounded-full border border-border bg-paper text-sm font-bold text-ink/45"
                 aria-hidden="true"
               >
                 ✕
@@ -48,26 +48,26 @@ export function BeforeAfter() {
             </ul>
           </article>
 
-          <article className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-purple bg-purple p-6 text-paper shadow-lift sm:p-8">
+          <article className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-accent bg-accent p-6 text-white shadow-lift sm:p-8">
             <div
-              className="pointer-events-none absolute -bottom-24 -right-20 size-64 rounded-full bg-lilac/20"
+              className="pointer-events-none absolute -bottom-24 -right-20 size-64 rounded-full bg-pink/20"
               aria-hidden="true"
             />
-            <div className="relative flex items-center gap-3 border-b border-periwinkle/25 pb-5">
+            <div className="relative flex items-center gap-3 border-b border-mint/25 pb-5">
               <span
-                className="grid size-8 place-items-center rounded-full bg-lilac text-sm font-bold text-ink"
+                className="grid size-8 place-items-center rounded-full bg-pink text-sm font-bold text-white"
                 aria-hidden="true"
               >
                 ✓
               </span>
-              <h3 className="text-sm font-bold tracking-[0.16em] text-periwinkle">AFTER</h3>
+              <h3 className="text-sm font-bold tracking-[0.16em] text-mint">AFTER</h3>
             </div>
 
             <ul className="relative mt-6 space-y-6">
               {afterItems.map((item) => (
-                <li key={item} className="flex gap-3.5 text-base leading-relaxed text-paper/85">
+                <li key={item} className="flex gap-3.5 text-base leading-relaxed text-white/85">
                   <span
-                    className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-lilac text-xs font-bold text-ink"
+                    className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-pink text-xs font-bold text-white"
                     aria-hidden="true"
                   >
                     ✓
