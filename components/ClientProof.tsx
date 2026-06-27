@@ -102,20 +102,17 @@ export function ClientProof() {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-28 bg-paper px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
+      className="scroll-mt-28 bg-paper px-5 py-14 sm:px-8 sm:py-16 lg:py-20"
       aria-labelledby="client-testimonials-heading"
     >
       <span id="brand-identity" className="block scroll-mt-28" aria-hidden="true" />
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-accent">
-            CLIENT TESTIMONIALS
-          </p>
           <h2
             id="client-testimonials-heading"
             className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl"
           >
-            The experience behind every project
+            Client testimonials
           </h2>
         </div>
 
@@ -134,31 +131,29 @@ export function ClientProof() {
                 <figure
                   key={name}
                   onClick={() => selectCard(index)}
-                  className={`flex min-h-[22rem] shrink-0 basis-full snap-start flex-col rounded-2xl border bg-paper p-6 transition duration-200 sm:p-7 md:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)] ${
+                  className={`flex h-[18.75rem] shrink-0 basis-full snap-start flex-col rounded-2xl border bg-paper px-6 pb-1 pt-6 transition duration-200 sm:px-7 sm:pb-1 sm:pt-7 md:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)] ${
                     isActive
                       ? "-translate-y-0.5 border-accent bg-white shadow-card"
                       : "border-border bg-white shadow-card hover:border-accent hover:bg-mint/20"
                   }`}
                 >
-                  <div className="flex-1">
-                    <div className="h-[10.5rem] overflow-y-auto scroll-smooth pr-2 text-[0.97rem] leading-[1.75] text-muted [scrollbar-color:#355F69_#D8E7DF] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-accent [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-mint">
-                      <blockquote>
-                        <span className="mr-1 font-bold text-pink" aria-hidden="true">
-                          &ldquo;
-                        </span>
-                        {quote}
-                        <span className="ml-1 font-bold text-pink" aria-hidden="true">
-                          &rdquo;
-                        </span>
-                      </blockquote>
-                    </div>
+                  <div className="h-40 overflow-y-auto scroll-smooth pr-2 text-[0.97rem] leading-[1.75] text-muted [scrollbar-color:#326371_#DAEEE3] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-accent [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-mint">
+                    <blockquote>
+                      <span className="mr-1 font-bold text-pink" aria-hidden="true">
+                        &ldquo;
+                      </span>
+                      {quote}
+                      <span className="ml-1 font-bold text-pink" aria-hidden="true">
+                        &rdquo;
+                      </span>
+                    </blockquote>
                   </div>
 
-                  <figcaption className="mt-8 flex items-center gap-3 border-t border-border pt-5">
-                  <div
-                    className="grid size-11 shrink-0 place-items-center rounded-full border border-border bg-mint text-sm font-bold text-accent"
-                    aria-label={`${name} avatar placeholder`}
-                  >
+                  <figcaption className="mt-4 flex h-16 items-center gap-3 border-t border-border pt-3">
+                    <div
+                      className="grid size-11 shrink-0 place-items-center rounded-full border border-border bg-mint text-sm font-bold text-accent"
+                      aria-label={`${name} avatar placeholder`}
+                    >
                       {initials}
                     </div>
                     <div>

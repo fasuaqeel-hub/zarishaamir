@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { SectionHeading } from "./SectionHeading";
 
 const questions = [
   {
@@ -30,13 +29,14 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faqs" className="scroll-mt-28 border-y border-border bg-cream px-5 py-16 sm:px-8 sm:py-20" aria-label="Frequently asked questions">
+    <section id="faqs" className="scroll-mt-28 bg-paper px-5 py-14 sm:px-8 sm:py-16 lg:py-20" aria-label="Frequently asked questions">
       <span id="faq" className="block scroll-mt-28" aria-hidden="true" />
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-        <SectionHeading
-          eyebrow="FAQs"
-          title="What clients often ask"
-        />
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
+            Frequently asked questions
+          </h2>
+        </div>
 
         <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-card">
           {questions.map((item, index) => (
@@ -44,7 +44,7 @@ export function FAQ() {
               <button
                 type="button"
                 className={`flex w-full items-center justify-between gap-6 px-5 py-5 text-left transition duration-200 sm:px-6 ${
-                  openIndex === index ? "bg-cream" : "hover:bg-mint/35"
+                  openIndex === index ? "bg-mint/20" : "hover:bg-mint/35"
                 }`}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-answer-${index}`}
@@ -53,7 +53,7 @@ export function FAQ() {
                 <h3 className="font-semibold text-ink">{item.question}</h3>
                 <span
                   className={`grid size-8 shrink-0 place-items-center rounded-full text-lg transition duration-200 ${
-                    openIndex === index ? "rotate-45 bg-accent text-white" : "bg-mint/45 text-accent"
+                    openIndex === index ? "rotate-45 bg-mint text-accent" : "bg-mint/45 text-accent"
                   }`}
                   aria-hidden="true"
                 >

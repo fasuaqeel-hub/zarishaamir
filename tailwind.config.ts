@@ -9,9 +9,9 @@ const config: Config = {
     colors: {
       ink: "#111111",
       muted: "#5E5E5E",
-      accent: "#355F69",
-      mint: "#D8E7DF",
-      pink: "#D866C3",
+      accent: "#326371",
+      mint: "#DAEEE3",
+      pink: "#E971C8",
       cream: "#F1F2EF",
       border: "#E2E2DD",
       paper: "#F8F8F6",

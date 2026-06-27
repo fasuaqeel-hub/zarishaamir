@@ -25,29 +25,24 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative scroll-mt-28 overflow-hidden border-y border-border bg-cream px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
+      className="relative scroll-mt-28 overflow-hidden border-y border-accent bg-accent px-5 py-14 sm:px-8 sm:py-16 lg:py-20"
       aria-labelledby="process-heading"
     >
       <span id="logo-systems" className="block scroll-mt-28" aria-hidden="true" />
       <span id="brand-guidelines" className="block scroll-mt-28" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-16 top-8 size-28 rounded-full bg-mint/55" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto mb-9 max-w-2xl text-center sm:mb-11">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-accent">THE PROCESS</p>
           <h2
             id="process-heading"
-            className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl"
+            className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl"
           >
-            A clear process from brand discovery to launch.
+            <span className="block">A clear process from</span>
+            <span className="block">brand discovery to launch</span>
           </h2>
         </div>
 
         <ol className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6 lg:mt-16">
-          <div
-            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-mint md:left-0 md:right-0 md:top-5 md:h-px md:w-auto"
-            aria-hidden="true"
-          />
           {steps.map(({ title, description }, index) => (
             <li
               key={title}
@@ -56,15 +51,15 @@ export function Process() {
               }`}
             >
               <div className="absolute left-0 top-0 md:relative md:left-auto md:top-auto md:mb-7 md:flex md:justify-center">
-                <span className="grid size-9 place-items-center rounded-full border border-accent bg-accent text-sm font-bold text-white shadow-card transition-colors group-hover:bg-pink group-hover:text-white">
+                <span className="grid size-9 cursor-pointer place-items-center rounded-full border border-mint bg-mint text-sm font-bold text-accent shadow-card transition-colors duration-300 group-hover:border-pink group-hover:bg-pink group-hover:text-white">
                   {index + 1}
                 </span>
               </div>
 
               <div className="max-w-xl md:mx-auto md:max-w-[15rem] md:text-center">
-                <span className="mb-3 block h-px w-12 bg-pink/55 md:mx-auto" aria-hidden="true" />
-                <h3 className="text-lg font-bold leading-snug tracking-tight text-ink">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{description}</p>
+                <span className="mb-3 block h-px w-12 bg-white/78 md:mx-auto" aria-hidden="true" />
+                <h3 className="text-lg font-bold leading-snug tracking-tight text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/80">{description}</p>
               </div>
             </li>
           ))}
