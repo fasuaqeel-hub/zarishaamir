@@ -103,7 +103,7 @@ export function FinalCTA() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-28 bg-paper px-5 py-14 sm:px-8 sm:py-16 lg:py-20" aria-labelledby="final-cta-heading">
+    <section id="contact" className="scroll-mt-28 bg-paper px-5 py-12 sm:px-8 sm:py-14 lg:py-[72px]" aria-labelledby="final-cta-heading">
       <span id="enquire" className="block scroll-mt-28" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-accent px-6 py-10 text-white shadow-lift sm:px-8 sm:py-12 lg:p-12">
         <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
@@ -198,7 +198,7 @@ export function FinalCTA() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-accent px-7 py-3 text-sm font-bold text-white shadow-button transition duration-200 hover:-translate-y-0.5 hover:bg-pink hover:text-white hover:shadow-card disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:bg-accent disabled:hover:shadow-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-accent px-7 py-3 text-[0.95rem] font-bold tracking-[0.015em] text-white shadow-button transition duration-200 hover:-translate-y-0.5 hover:bg-pink hover:text-white hover:shadow-card disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:bg-accent disabled:hover:shadow-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
               >
                 {status === "loading" ? "Sending..." : "Send Inquiry"}
               </button>

@@ -2,7 +2,7 @@ export function Hero() {
   return (
     <section
       id="services"
-      className="relative isolate grid scroll-mt-28 place-items-center overflow-hidden bg-paper px-4 pb-8 pt-12 sm:px-8 sm:pb-14 sm:pt-24 lg:pb-16 lg:pt-28"
+      className="relative isolate grid scroll-mt-28 place-items-center overflow-hidden bg-paper px-4 pb-3.5 pt-12 sm:px-8 sm:pb-6 sm:pt-20 lg:pb-6 lg:pt-24"
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto w-full max-w-[1040px] text-center">
@@ -28,13 +28,13 @@ export function Hero() {
         <div className="mx-auto mt-5 flex max-w-md flex-col justify-center gap-4 sm:mt-8 sm:max-w-none sm:flex-row sm:gap-5">
           <a
             href="#enquire"
-            className="inline-flex min-h-14 cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-9 py-3.5 text-[0.95rem] font-extrabold text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
+            className="inline-flex min-h-14 cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
           >
             Get Started
           </a>
           <a
             href="#custom-merch"
-            className="inline-flex min-h-14 items-center justify-center rounded-xl border border-accent bg-transparent px-9 py-3.5 text-[0.95rem] font-extrabold text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-mint hover:text-accent hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
+            className="inline-flex min-h-14 items-center justify-center rounded-xl border border-accent bg-transparent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-mint hover:text-accent hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
           >
             View Brand Projects
           </a>

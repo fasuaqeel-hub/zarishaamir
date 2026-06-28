@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const steps = [
   {
     title: "Discover Your Brand",
@@ -22,10 +26,75 @@ const steps = [
 ];
 
 export function Process() {
+  const stepRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const touchOrTabletQuery = window.matchMedia("(max-width: 1023px), (hover: none), (pointer: coarse)");
+    let animationFrame = 0;
+
+    const updateCenteredStep = () => {
+      if (!touchOrTabletQuery.matches) {
+        setActiveIndex(null);
+        return;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      const visibleSteps = stepRefs.current
+        .map((step, index) => ({ step, index }))
+        .filter(({ step }) => {
+          if (!step) {
+            return false;
+          }
+
+          const rect = step.getBoundingClientRect();
+          return rect.bottom > 0 && rect.top < window.innerHeight;
+        });
+
+      if (!visibleSteps.length) {
+        setActiveIndex(null);
+        return;
+      }
+
+      const closestStep = visibleSteps.reduce((closest, current) => {
+        const closestRect = closest.step?.getBoundingClientRect();
+        const currentRect = current.step?.getBoundingClientRect();
+
+        if (!closestRect || !currentRect) {
+          return closest;
+        }
+
+        const closestDistance = Math.abs(closestRect.top + closestRect.height / 2 - viewportCenter);
+        const currentDistance = Math.abs(currentRect.top + currentRect.height / 2 - viewportCenter);
+
+        return currentDistance < closestDistance ? current : closest;
+      });
+
+      setActiveIndex(closestStep.index);
+    };
+
+    const requestCenteredStepUpdate = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(updateCenteredStep);
+    };
+
+    updateCenteredStep();
+    window.addEventListener("scroll", requestCenteredStepUpdate, { passive: true });
+    window.addEventListener("resize", requestCenteredStepUpdate);
+    touchOrTabletQuery.addEventListener("change", updateCenteredStep);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", requestCenteredStepUpdate);
+      window.removeEventListener("resize", requestCenteredStepUpdate);
+      touchOrTabletQuery.removeEventListener("change", updateCenteredStep);
+    };
+  }, []);
+
   return (
     <section
       id="process"
-      className="relative scroll-mt-28 overflow-hidden border-y border-accent bg-accent px-5 py-14 sm:px-8 sm:py-16 lg:py-20"
+      className="relative scroll-mt-28 overflow-hidden border-y border-accent bg-accent px-5 py-14 sm:px-8 sm:py-14 lg:py-20"
       aria-labelledby="process-heading"
     >
       <span id="logo-systems" className="block scroll-mt-28" aria-hidden="true" />
@@ -42,27 +111,52 @@ export function Process() {
           </h2>
         </div>
 
-        <ol className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6 lg:mt-16">
-          {steps.map(({ title, description }, index) => (
-            <li
-              key={title}
-              className={`group relative flex gap-5 pl-12 md:block md:pl-0 ${
-                index % 2 ? "md:pt-16" : "md:pt-0"
-              }`}
-            >
-              <div className="absolute left-0 top-0 md:relative md:left-auto md:top-auto md:mb-7 md:flex md:justify-center">
-                <span className="grid size-9 cursor-pointer place-items-center rounded-full border border-mint bg-mint text-sm font-bold text-accent shadow-card transition-colors duration-300 group-hover:border-pink group-hover:bg-pink group-hover:text-white">
+        <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-14">
+          {steps.map(({ title, description }, index) => {
+            const isActive = activeIndex === index;
+
+            return (
+              <li
+                key={title}
+                ref={(element) => {
+                  stepRefs.current[index] = element;
+                }}
+                data-step-index={index}
+                className={`group relative rounded-2xl px-5 py-5 pr-16 text-left transition duration-300 ease-out hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] sm:px-6 sm:py-6 sm:pr-[4.5rem] ${
+                  isActive
+                    ? "-translate-y-1 border border-transparent bg-white shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+                    : "border border-[#214B55]/45 bg-white/[0.04] shadow-[0_18px_55px_rgba(17,17,17,0.08)]"
+                }`}
+              >
+                <span
+                  className={`absolute right-5 top-5 grid size-10 place-items-center rounded-full border text-sm font-bold shadow-card transition-colors duration-300 ease-out group-hover:border-pink group-hover:bg-pink group-hover:text-white sm:right-6 sm:top-6 ${
+                    isActive
+                      ? "border-pink bg-pink text-white"
+                      : "border-mint bg-mint text-accent"
+                  }`}
+                >
                   {index + 1}
                 </span>
-              </div>
 
-              <div className="max-w-xl md:mx-auto md:max-w-[15rem] md:text-center">
-                <span className="mb-3 block h-px w-12 bg-white/78 md:mx-auto" aria-hidden="true" />
-                <h3 className="text-lg font-bold leading-snug tracking-tight text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/80">{description}</p>
-              </div>
-            </li>
-          ))}
+                <div className="max-w-[38rem]">
+                  <h3
+                    className={`text-lg font-bold leading-snug tracking-tight transition-colors duration-300 ease-out group-hover:text-ink ${
+                      isActive ? "text-ink" : "text-white"
+                    }`}
+                  >
+                    {title}
+                  </h3>
+                  <p
+                    className={`mt-3 text-[0.9rem] font-normal leading-[1.7] transition-colors duration-300 ease-out group-hover:text-[#333333] ${
+                      isActive ? "text-[#333333]" : "text-white/[0.88]"
+                    }`}
+                  >
+                    {description}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
         </ol>
       </div>
     </section>

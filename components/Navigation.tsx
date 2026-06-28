@@ -86,7 +86,7 @@ export function Navigation() {
 
           <a
             href="#contact"
-            className="hidden min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white shadow-button transition duration-200 hover:-translate-y-0.5 hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink lg:inline-flex"
+            className="hidden min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[0.95rem] font-bold tracking-[0.015em] text-white shadow-button transition duration-200 hover:-translate-y-0.5 hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink lg:inline-flex"
           >
             Get Started
             <span aria-hidden="true">→</span>
@@ -135,7 +135,7 @@ export function Navigation() {
             ))}
             <a
               href="#contact"
-              className="mt-1 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white shadow-button transition duration-200 hover:bg-pink hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
+              className="mt-1 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[0.95rem] font-bold tracking-[0.015em] text-white shadow-button transition duration-200 hover:bg-pink hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
               onClick={closeMenu}
             >
               Get Started

@@ -102,7 +102,7 @@ export function ClientProof() {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-28 bg-paper px-5 py-14 sm:px-8 sm:py-16 lg:py-20"
+      className="scroll-mt-28 bg-paper px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:pb-[72px] lg:pt-14"
       aria-labelledby="client-testimonials-heading"
     >
       <span id="brand-identity" className="block scroll-mt-28" aria-hidden="true" />
