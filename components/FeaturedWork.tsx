@@ -10,21 +10,26 @@ export function FeaturedWork() {
       <span id="custom-merch" className="block scroll-mt-28" aria-hidden="true" />
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <SectionHeading
-            eyebrow="Selected work"
-            title="Ideas Brought to Life"
-          />
+          <div>
+            <SectionHeading
+              eyebrow="Selected work"
+              title="Ideas Brought to Life"
+            />
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">
+              View case studies
+            </p>
+          </div>
           <a
             href="https://www.behance.net/zarishaamir"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-14 w-fit cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
+            className="hidden min-h-14 w-fit cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10 lg:inline-flex"
           >
             View full portfolio
           </a>
         </div>
 
-        <div className="mt-7 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
           <a
             href="https://www.behance.net/gallery/251025059/Lane-brand-identity-and-merch-design?platform=direct"
             target="_blank"
@@ -39,15 +44,12 @@ export function FeaturedWork() {
                 className="h-full w-full object-cover"
                 loading="eager"
               />
-              <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-accent px-4 py-2 text-xs font-bold text-white opacity-100 shadow-card transition duration-300 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:bg-pink [@media(hover:hover)]:group-hover:opacity-100">
-                View Case Study &rarr;
-              </span>
             </div>
             <div className="relative flex flex-col px-5 py-5">
               <h3 className="text-xs font-bold uppercase leading-tight tracking-[0.12em] text-ink">
                 LANE
               </h3>
-              <p className="mt-2.5 text-xs font-bold uppercase tracking-[0.12em] text-accent">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-accent">
                 Brand identity &bull; Logo system &bull; Custom merch design
               </p>
             </div>
@@ -67,15 +69,12 @@ export function FeaturedWork() {
                 className="h-full w-full object-cover"
                 loading="eager"
               />
-              <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-accent px-4 py-2 text-xs font-bold text-white opacity-100 shadow-card transition duration-300 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:bg-pink [@media(hover:hover)]:group-hover:opacity-100">
-                View Case Study &rarr;
-              </span>
             </div>
             <div className="relative flex flex-col px-5 py-5">
               <h3 className="text-xs font-bold uppercase leading-tight tracking-[0.12em] text-ink">
                 SHE&apos;S SO SELF CENTERED
               </h3>
-              <p className="mt-2.5 text-xs font-bold uppercase tracking-[0.12em] text-accent">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-accent">
                 Visual identity &bull; Merch application
               </p>
             </div>
@@ -97,6 +96,17 @@ export function FeaturedWork() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center lg:hidden">
+          <a
+            href="https://www.behance.net/zarishaamir"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-14 w-fit cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-8 py-3.5 text-base font-bold tracking-[0.015em] text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-9"
+          >
+            View full portfolio
+          </a>
         </div>
       </div>
     </section>
