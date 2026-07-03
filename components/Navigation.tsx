@@ -58,11 +58,13 @@ export function Navigation() {
             className="flex min-w-0 items-center gap-3 rounded-full pr-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
             onClick={closeMenu}
           >
-            <img
-              src="/profile-placeholder.svg"
-              alt="Zarish Aamir profile placeholder"
-              className="size-11 shrink-0 rounded-full border border-border bg-paper object-cover sm:size-12"
-            />
+            <span className="size-11 shrink-0 overflow-hidden rounded-full border-2 border-[#DAEEE3] bg-paper sm:size-12">
+              <img
+                src="/profile-zarish.png"
+                alt="Zarish Aamir"
+                className="size-full scale-125 object-cover object-top"
+              />
+            </span>
             <span className="truncate text-sm font-bold text-ink sm:text-base">Zarish Aamir</span>
           </a>
 

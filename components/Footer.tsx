@@ -20,11 +20,13 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/10 pb-10 md:grid-cols-[1.35fr_0.8fr_1.1fr] md:gap-12">
           <div>
             <div className="flex items-center gap-4">
-              <img
-                src="/profile-placeholder.svg"
-                alt="Zarish Aamir profile placeholder"
-                className="size-12 rounded-2xl border border-white/12 bg-mint object-cover"
-              />
+              <span className="size-16 shrink-0 overflow-hidden rounded-full border-2 border-[#DAEEE3] bg-mint sm:size-[72px]">
+                <img
+                  src="/profile-zarish.png"
+                  alt="Zarish Aamir"
+                  className="size-full scale-125 object-cover object-top"
+                />
+              </span>
               <div>
                 <p className="text-lg font-bold leading-tight">Zarish Aamir</p>
                 <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-mint">Brand Designer</p>

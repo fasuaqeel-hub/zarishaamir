@@ -9,6 +9,7 @@ const testimonials = [
     name: "Zarmeen",
     role: "Former Kittl Creator \u2022 Print-On-Demand Specialist",
     initials: "Z",
+    imageSrc: "/zarmeen.jpeg",
   },
   {
     quote:
@@ -16,6 +17,7 @@ const testimonials = [
     name: "Kai Judd",
     role: "Founder & Marketing Lead, Selfawear",
     initials: "KJ",
+    imageSrc: "/kai-judd.jpeg",
   },
   {
     quote:
@@ -25,6 +27,39 @@ const testimonials = [
     initials: "NA",
   },
 ];
+
+function TestimonialAvatar({
+  name,
+  initials,
+  imageSrc,
+}: {
+  name: string;
+  initials: string;
+  imageSrc?: string;
+}) {
+  const [hasImageError, setHasImageError] = useState(false);
+  const avatarSize = "size-[52px] shrink-0 rounded-full border border-[#DAEEE3] sm:size-14";
+
+  if (!imageSrc || hasImageError) {
+    return (
+      <div
+        className={`${avatarSize} grid place-items-center bg-mint text-sm font-bold text-accent`}
+        aria-label={`${name} avatar placeholder`}
+      >
+        {initials}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={imageSrc}
+      alt={name}
+      className={`${avatarSize} object-cover`}
+      onError={() => setHasImageError(true)}
+    />
+  );
+}
 
 export function ClientProof() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -124,7 +159,7 @@ export function ClientProof() {
             className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-1 py-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             aria-live="polite"
           >
-            {testimonials.map(({ quote, name, role, initials }, index) => {
+            {testimonials.map(({ quote, name, role, initials, imageSrc }, index) => {
               const isActive = selectedIndex === index;
 
               return (
@@ -150,12 +185,7 @@ export function ClientProof() {
                   </div>
 
                   <figcaption className="mt-4 flex h-16 items-center gap-3 border-t border-border pt-3">
-                    <div
-                      className="grid size-11 shrink-0 place-items-center rounded-full border border-border bg-mint text-sm font-bold text-accent"
-                      aria-label={`${name} avatar placeholder`}
-                    >
-                      {initials}
-                    </div>
+                    <TestimonialAvatar name={name} initials={initials} imageSrc={imageSrc} />
                     <div>
                       <p className="font-bold leading-tight text-ink">{name}</p>
                       <p className="mt-1 text-xs font-semibold leading-relaxed text-ink/55">{role}</p>
