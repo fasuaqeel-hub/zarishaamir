@@ -27,18 +27,51 @@ const steps = [
 
 export function Process() {
   const stepRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const activeIndexRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hasPointerMode, setHasPointerMode] = useState(false);
+  const [isDesktopPointer, setIsDesktopPointer] = useState(false);
 
   useEffect(() => {
-    const touchOrTabletQuery = window.matchMedia("(max-width: 1023px), (hover: none), (pointer: coarse)");
+    const desktopPointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const updatePointerMode = () => {
+      const matchesDesktopPointer = desktopPointerQuery.matches;
+
+      setIsDesktopPointer(matchesDesktopPointer);
+      setHasPointerMode(true);
+      setHoveredIndex(null);
+
+      if (matchesDesktopPointer) {
+        activeIndexRef.current = null;
+        setActiveIndex(null);
+      }
+    };
+
+    updatePointerMode();
+    desktopPointerQuery.addEventListener("change", updatePointerMode);
+
+    return () => {
+      desktopPointerQuery.removeEventListener("change", updatePointerMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasPointerMode) {
+      return;
+    }
+
+    if (isDesktopPointer) {
+      activeIndexRef.current = null;
+      setActiveIndex(null);
+      return;
+    }
+
     let animationFrame = 0;
+    const switchThreshold = 24;
 
     const updateCenteredStep = () => {
-      if (!touchOrTabletQuery.matches) {
-        setActiveIndex(null);
-        return;
-      }
-
       const viewportCenter = window.innerHeight / 2;
       const visibleSteps = stepRefs.current
         .map((step, index) => ({ step, index }))
@@ -52,6 +85,7 @@ export function Process() {
         });
 
       if (!visibleSteps.length) {
+        activeIndexRef.current = null;
         setActiveIndex(null);
         return;
       }
@@ -70,6 +104,28 @@ export function Process() {
         return currentDistance < closestDistance ? current : closest;
       });
 
+      const currentActiveIndex = activeIndexRef.current;
+
+      if (currentActiveIndex === closestStep.index) {
+        return;
+      }
+
+      const currentActiveStep = currentActiveIndex === null ? null : stepRefs.current[currentActiveIndex];
+      const currentActiveRect = currentActiveStep?.getBoundingClientRect();
+
+      if (currentActiveRect) {
+        const closestRect = closestStep.step?.getBoundingClientRect();
+        const closestDistance = closestRect
+          ? Math.abs(closestRect.top + closestRect.height / 2 - viewportCenter)
+          : 0;
+        const currentDistance = Math.abs(currentActiveRect.top + currentActiveRect.height / 2 - viewportCenter);
+
+        if (currentDistance - closestDistance < switchThreshold) {
+          return;
+        }
+      }
+
+      activeIndexRef.current = closestStep.index;
       setActiveIndex(closestStep.index);
     };
 
@@ -81,15 +137,13 @@ export function Process() {
     updateCenteredStep();
     window.addEventListener("scroll", requestCenteredStepUpdate, { passive: true });
     window.addEventListener("resize", requestCenteredStepUpdate);
-    touchOrTabletQuery.addEventListener("change", updateCenteredStep);
 
     return () => {
       window.cancelAnimationFrame(animationFrame);
       window.removeEventListener("scroll", requestCenteredStepUpdate);
       window.removeEventListener("resize", requestCenteredStepUpdate);
-      touchOrTabletQuery.removeEventListener("change", updateCenteredStep);
     };
-  }, []);
+  }, [hasPointerMode, isDesktopPointer]);
 
   return (
     <section
@@ -113,7 +167,9 @@ export function Process() {
 
         <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:mt-14">
           {steps.map(({ title, description }, index) => {
-            const isActive = activeIndex === index;
+            const isActive =
+              (isDesktopPointer && hoveredIndex === index) ||
+              (!isDesktopPointer && activeIndex === index);
 
             return (
               <li
@@ -122,14 +178,30 @@ export function Process() {
                   stepRefs.current[index] = element;
                 }}
                 data-step-index={index}
-                className={`group relative rounded-2xl px-5 py-5 pr-16 text-left transition duration-300 ease-out hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] sm:px-6 sm:py-6 sm:pr-[4.5rem] ${
+                onMouseEnter={() => {
+                  if (isDesktopPointer) {
+                    setHoveredIndex(index);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (isDesktopPointer) {
+                    setHoveredIndex(null);
+                  }
+                }}
+                className={`group relative rounded-2xl px-5 py-5 pr-16 text-left transition duration-300 ease-out sm:px-6 sm:py-6 sm:pr-[4.5rem] ${
+                  isDesktopPointer
+                    ? "hover:-translate-y-1 hover:border-transparent hover:bg-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+                    : ""
+                } ${
                   isActive
                     ? "-translate-y-1 border border-transparent bg-white shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
                     : "border border-[#214B55]/45 bg-white/[0.04] shadow-[0_18px_55px_rgba(17,17,17,0.08)]"
                 }`}
               >
                 <span
-                  className={`absolute right-5 top-5 grid size-10 place-items-center rounded-full border text-sm font-bold shadow-card transition-colors duration-300 ease-out group-hover:border-pink group-hover:bg-pink group-hover:text-white sm:right-6 sm:top-6 ${
+                  className={`absolute right-5 top-5 grid size-10 place-items-center rounded-full border text-sm font-bold shadow-card transition-colors duration-300 ease-out sm:right-6 sm:top-6 ${
+                    isDesktopPointer ? "group-hover:border-pink group-hover:bg-pink group-hover:text-white" : ""
+                  } ${
                     isActive
                       ? "border-pink bg-pink text-white"
                       : "border-mint bg-mint text-accent"
@@ -140,14 +212,18 @@ export function Process() {
 
                 <div className="max-w-[38rem]">
                   <h3
-                    className={`text-lg font-bold leading-snug tracking-tight transition-colors duration-300 ease-out group-hover:text-ink ${
+                    className={`text-lg font-bold leading-snug tracking-tight transition-colors duration-300 ease-out ${
+                      isDesktopPointer ? "group-hover:text-ink" : ""
+                    } ${
                       isActive ? "text-ink" : "text-white"
                     }`}
                   >
                     {title}
                   </h3>
                   <p
-                    className={`mt-3 text-[0.9rem] font-normal leading-[1.7] transition-colors duration-300 ease-out group-hover:text-[#333333] ${
+                    className={`mt-3 text-[0.9rem] font-normal leading-[1.7] transition-colors duration-300 ease-out ${
+                      isDesktopPointer ? "group-hover:text-[#333333]" : ""
+                    } ${
                       isActive ? "text-[#333333]" : "text-white/[0.88]"
                     }`}
                   >

@@ -1,3 +1,5 @@
+import { Mail, createLucideIcon, type LucideIcon } from "lucide-react";
+
 const exploreLinks = [
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#featured-work" },
@@ -7,10 +9,30 @@ const exploreLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-const findMeLinks = [
-  { label: "contact@zarishaamir.com", href: "mailto:contact@zarishaamir.com" },
-  { label: "www.linkedin.com/in/zarishaamir", href: "https://www.linkedin.com/in/zarishaamir" },
-  { label: "@zarishaamirdeziner", href: "https://www.instagram.com/zarishaamirdeziner" },
+const Linkedin = createLucideIcon("Linkedin", [
+  ["path", { d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z", key: "c2jq9f" }],
+  ["rect", { width: "4", height: "12", x: "2", y: "9", key: "mk3on5" }],
+  ["circle", { cx: "4", cy: "4", r: "2", key: "bt5ra8" }],
+]);
+
+const Instagram = createLucideIcon("Instagram", [
+  ["rect", { width: "20", height: "20", x: "2", y: "2", rx: "5", ry: "5", key: "2e1cvw" }],
+  ["path", { d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z", key: "9exkf1" }],
+  ["line", { x1: "17.5", x2: "17.51", y1: "6.5", y2: "6.5", key: "r4j83e" }],
+]);
+
+const findMeLinks: Array<{ label: string; href: string; icon: LucideIcon }> = [
+  { label: "contact@zarishaamir.com", href: "mailto:contact@zarishaamir.com", icon: Mail },
+  {
+    label: "www.linkedin.com/in/zarishaamir",
+    href: "https://www.linkedin.com/in/zarishaamir",
+    icon: Linkedin,
+  },
+  {
+    label: "@zarishaamir.design",
+    href: "https://www.instagram.com/zarishaamir.design?igsh=aWtmNWZhdWt3ejI2",
+    icon: Instagram,
+  },
 ];
 
 export function Footer() {
@@ -33,8 +55,8 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-5 max-w-sm text-sm leading-[1.75] text-white/62">
-              Brand identity, logo systems, and custom merch design for businesses ready to be
-              recognized.
+              Brand identity, logo systems, and custom merch design for businesses that want to be
+              more recognizable.
             </p>
           </div>
 
@@ -56,23 +78,32 @@ export function Footer() {
           <div>
             <h2 className="text-xs font-bold uppercase tracking-[0.18em] text-white">Find Me</h2>
             <div className="mt-5 grid gap-3">
-              {findMeLinks.map((link) => (
-                <a
+              {findMeLinks.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <a
                   key={link.href}
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group flex w-fit max-w-full items-center gap-2 text-sm font-semibold text-white/62 transition duration-200 hover:text-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
                 >
-                  <span className="truncate">{link.label}</span>
+                  <Icon
+                    className="size-[18px] shrink-0 text-mint/80 transition duration-200 group-hover:text-pink"
+                    aria-hidden="true"
+                    strokeWidth={1.8}
+                  />
+                  <span className="min-w-0 truncate">{link.label}</span>
                   <span
                     className="text-xs text-mint transition duration-200 group-hover:text-pink"
                     aria-hidden="true"
                   >
                     ↗
                   </span>
-                </a>
-              ))}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

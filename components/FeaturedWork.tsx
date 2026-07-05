@@ -1,9 +1,5 @@
 import { SectionHeading } from "./SectionHeading";
 
-const projects = [
-  { category: "Creative direction", accent: "bg-white/90", shape: "rounded-full" },
-];
-
 export function FeaturedWork() {
   return (
     <section id="featured-work" className="scroll-mt-28 bg-paper px-5 py-12 sm:px-8 sm:py-14 lg:py-[72px]" aria-label="Featured work">
@@ -15,9 +11,6 @@ export function FeaturedWork() {
               eyebrow="Selected work"
               title="Ideas Brought to Life"
             />
-            <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">
-              View case studies
-            </p>
           </div>
           <a
             href="https://www.behance.net/zarishaamir"
@@ -29,7 +22,7 @@ export function FeaturedWork() {
           </a>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-7 grid gap-4 md:grid-cols-3">
           <a
             href="https://www.behance.net/gallery/251025059/Lane-brand-identity-and-merch-design?platform=direct"
             target="_blank"
@@ -80,22 +73,30 @@ export function FeaturedWork() {
             </div>
           </a>
 
-          {projects.map((project, index) => (
-            <article
-              key={project.category}
-              className="group overflow-hidden rounded-3xl border border-border bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lift"
-            >
-              <div className="relative grid aspect-[4/3] place-items-center overflow-hidden bg-paper">
-                <div className={`absolute size-40 ${project.shape} ${project.accent} transition duration-500 group-hover:scale-110`} />
-                <div className="absolute left-[22%] top-[22%] size-24 rotate-12 rounded-2xl border border-accent/15 bg-white/85 transition duration-500 group-hover:rotate-6 group-hover:border-pink" />
-                <span className="relative text-5xl font-bold tracking-display text-accent/75">0{index + 3}</span>
-              </div>
-              <div className="flex items-center justify-between px-5 py-4">
-                <h3 className="font-bold text-ink">{project.category}</h3>
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-accent">Selected work</span>
-              </div>
-            </article>
-          ))}
+          <a
+            href="https://www.behance.net/gallery/242982487/Brand-Identity-and-custom-merch-Meltin-Roll?platform=direct"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group overflow-hidden rounded-3xl border border-border bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lift focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink"
+            aria-label="Open Meltin Roll brand identity and custom merch project on Behance"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden bg-mint">
+              <img
+                src="/meltin-roll-cover.png"
+                alt="Meltin Roll Brand Identity & Custom Merch cover"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div className="relative flex flex-col px-5 py-5">
+              <h3 className="text-xs font-bold uppercase leading-tight tracking-[0.12em] text-ink">
+                MELTIN ROLL
+              </h3>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-accent">
+                Brand identity &bull; Logo system &bull; Custom merch design
+              </p>
+            </div>
+          </a>
         </div>
 
         <div className="mt-8 flex justify-center lg:hidden">
