@@ -78,19 +78,19 @@ export default function EnquiryPage() {
   };
 
   const inputClass =
-    "mt-2 min-h-12 w-full rounded-xl border border-ink/20 bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink/40 focus:border-accent focus:ring-2 focus:ring-accent/10";
+    "mt-1.5 min-h-11 w-full rounded-xl border border-ink/20 bg-white px-3 py-2.5 text-sm text-ink outline-none transition placeholder:text-ink/40 focus:border-accent focus:ring-2 focus:ring-accent/10";
 
   const labelClass =
     "block text-sm font-semibold text-ink";
 
   const sectionClass =
-    "rounded-3xl border border-ink/10 bg-white p-5 shadow-sm sm:p-8";
+    "rounded-2xl border border-ink/10 bg-white p-4 shadow-sm sm:p-6";
 
   const sectionTitleClass =
-    "mb-6 text-xl font-bold tracking-tight text-accent sm:text-2xl";
+    "mb-4 text-xl font-bold tracking-tight text-accent sm:text-2xl";
 
   const optionClass =
-    "flex cursor-pointer items-start gap-3 rounded-xl border border-ink/10 p-4 text-sm leading-relaxed transition hover:border-accent/50 hover:bg-paper";
+    "flex min-h-9 cursor-pointer items-start gap-2.5 rounded-lg px-2 py-1.5 text-sm leading-snug transition hover:bg-paper";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -215,7 +215,7 @@ export default function EnquiryPage() {
 
   return (
     <main className="min-h-screen bg-paper px-5 py-12 text-ink sm:px-8 sm:py-16">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         <a
           href="/"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:opacity-70"
@@ -223,41 +223,40 @@ export default function EnquiryPage() {
           ← Back to home
         </a>
 
-        <header className="mb-10 mt-8 sm:mb-12">
+        <header className="mb-8 mt-6 sm:mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
             PROJECT ENQUIRY
           </p>
-          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
             Let&apos;s bring your vision to life.
           </h1>
-          
-<div className="mt-5 max-w-2xl space-y-4 text-base leading-relaxed text-ink/70">
-  <p>Hi! I'm Zarish, and it's nice to see you here 👋</p>
-  <p>
-    Want to give your audience a memorable experience of a brand that feels
-    like you? You're at the right place. Please take a little time to fill
-    out the form below with as much detail as possible.
-  </p>
-  <p>
-    I keep my project slots limited each year so I can properly focus on
-    every brand I work with.
-  </p>
-  <p>
-    After submitting the form, you'll hear from me within 24 hours.
-  </p>
-</div>
+          <div className="mt-4 max-w-4xl space-y-2.5 text-base leading-relaxed text-ink/70">
+            <p>Hi! I'm Zarish, and it's nice to see you here 👋</p>
+            <p>
+              Want to give your audience a memorable experience of a brand that feels
+              like you? You're at the right place. Please take a little time to fill
+              out the form below with as much detail as possible.
+            </p>
+            <p>
+              I keep my project slots limited each year so I can properly focus on
+              every brand I work with.
+            </p>
+            <p>
+              After submitting the form, you'll hear from me within 24 hours.
+            </p>
+          </div>
 
-          <p className="mt-5 text-sm text-ink/60">
+          <p className="mt-4 text-sm text-ink/60">
             Fields marked with <span className="font-bold text-accent">*</span>{" "}
             are required.
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} noValidate className="space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="space-y-4">
           <section className={sectionClass}>
             <h2 className={sectionTitleClass}>01. About You & Your Business</h2>
 
-            <div className="space-y-6">
+            <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
               <label className={labelClass}>
                 Full Name <span className="text-accent">*</span>
                 <input
@@ -334,7 +333,7 @@ export default function EnquiryPage() {
                 <span className="text-accent">*</span>
               </legend>
 
-              <div className="mt-4 space-y-3">
+              <div className="mt-2 grid gap-x-4 sm:grid-cols-2">
                 {services.map((service) => (
                   <label key={service} className={optionClass}>
                     <input
@@ -365,12 +364,12 @@ export default function EnquiryPage() {
               )}
             </fieldset>
 
-            <fieldset className="mt-8">
+            <fieldset className="mt-6">
               <legend className={labelClass}>
                 How soon are you hoping to start this project?{" "}
                 <span className="text-accent">*</span>
               </legend>
-              <div className="mt-4 space-y-3">
+              <div className="mt-2 grid gap-x-4 sm:grid-cols-2">
                 {timelines.map((item) => (
                   <label key={item} className={optionClass}>
                     <input
@@ -396,11 +395,11 @@ export default function EnquiryPage() {
               )}
             </fieldset>
 
-            <label className={`${labelClass} mt-8`}>
+            <label className={`${labelClass} mt-6`}>
               Project Description <span className="text-accent">*</span>
               <textarea
                 className={`${inputClass} resize-y`}
-                rows={5}
+                rows={4}
                 placeholder="Share the details of your project..."
                 value={values.projectDescription}
                 onChange={(e) =>
@@ -410,12 +409,12 @@ export default function EnquiryPage() {
               />
             </label>
 
-            <label className={`${labelClass} mt-8`}>
+            <label className={`${labelClass} mt-6`}>
               What would you like this project to help you achieve?{" "}
               <span className="text-accent">*</span>
               <textarea
                 className={`${inputClass} resize-y`}
-                rows={4}
+                rows={3}
                 placeholder="What are your goals? What would success look like?"
                 value={values.projectGoals}
                 onChange={(e) => updateField("projectGoals", e.target.value)}
@@ -423,7 +422,7 @@ export default function EnquiryPage() {
               />
             </label>
 
-            <label className={`${labelClass} mt-8`}>
+            <label className={`${labelClass} mt-6`}>
               What vision/design style do you have for the project?
               <span className="mt-1 block font-normal leading-relaxed text-ink/60">
                 Drop a link to your Pinterest board, inspiration folder, or
@@ -437,12 +436,8 @@ export default function EnquiryPage() {
                 onChange={(e) => updateField("designVision", e.target.value)}
               />
             </label>
-          </section>
 
-          <section className={sectionClass}>
-            <h2 className={sectionTitleClass}>03. Investment & Discovery</h2>
-
-            <fieldset>
+            <fieldset className="mt-6">
               <legend className={labelClass}>
                 Project Investment{" "}
                 <span className="font-normal text-ink/60">
@@ -450,7 +445,7 @@ export default function EnquiryPage() {
                 </span>{" "}
                 <span className="text-accent">*</span>
               </legend>
-              <div className="mt-4 space-y-3">
+              <div className="mt-2 grid gap-x-4 sm:grid-cols-2">
                 {investments.map((item) => (
                   <label key={item} className={optionClass}>
                     <input
@@ -477,13 +472,15 @@ export default function EnquiryPage() {
                 />
               )}
             </fieldset>
+          </section>
 
-            <fieldset className="mt-8">
+          <section className={sectionClass}>
+            <fieldset>
               <legend className={labelClass}>
                 Where did you find me?{" "}
                 <span className="text-accent">*</span>
               </legend>
-              <div className="mt-4 space-y-3">
+              <div className="mt-2 grid gap-x-4 sm:grid-cols-2">
                 {discoverySources.map((source) => (
                   <label key={source} className={optionClass}>
                     <input
@@ -509,11 +506,11 @@ export default function EnquiryPage() {
               )}
             </fieldset>
 
-            <label className={`${labelClass} mt-8`}>
+            <label className={`${labelClass} mt-6`}>
               Any questions or queries?
               <textarea
                 className={`${inputClass} resize-y`}
-                rows={4}
+                rows={3}
                 placeholder="Your questions or additional notes..."
                 value={values.questions}
                 onChange={(e) => updateField("questions", e.target.value)}

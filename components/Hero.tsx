@@ -27,7 +27,7 @@ export function Hero() {
 
         <div className="mx-auto mt-5 flex max-w-md flex-col justify-center gap-4 sm:mt-8 sm:max-w-none sm:flex-row sm:gap-5">
           <a
-            href="#enquire"
+            href="/enquiry"
             className="inline-flex min-h-14 cursor-pointer items-center justify-center rounded-xl border border-accent bg-accent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-white shadow-button transition duration-300 hover:border-pink hover:bg-pink hover:text-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
           >
             Get Started

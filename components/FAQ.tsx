@@ -37,14 +37,13 @@ export function FAQ() {
             Frequently asked questions
           </h2>
           <p className="mt-4 hidden text-base leading-relaxed text-muted md:block">
-            Don&apos;t see your question here? I&apos;m happy to help. Send me a message with your
-            question and I&apos;ll get back to you within 24 hours.
+            Don&apos;t see your question here, or have a project in mind you&apos;d love to discuss? Don&apos;t worry, I&apos;ve got you! Click below to tell me a little about your project, share your questions, and let me know what you&apos;re looking to create. I&apos;ll get back to you within 24 hours.
           </p>
           <a
-            href="#enquire"
+            href="/enquiry"
             className="mt-6 hidden min-h-14 items-center justify-center rounded-xl border border-accent bg-transparent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-mint hover:text-accent hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10 md:inline-flex"
           >
-            Ask a question
+            Let&apos;s talk about your project →
           </a>
         </div>
 
@@ -87,14 +86,13 @@ export function FAQ() {
 
         <div className="md:hidden">
           <p className="text-base leading-relaxed text-muted">
-            Don&apos;t see your question here? I&apos;m happy to help. Send me a message with your
-            question and I&apos;ll get back to you within 24 hours.
+            Don&apos;t see your question here, or have a project in mind you&apos;d love to discuss? Don&apos;t worry, I&apos;ve got you! Click below to tell me a little about your project, share your questions, and let me know what you&apos;re looking to create. I&apos;ll get back to you within 24 hours.
           </p>
           <a
-            href="#enquire"
+            href="/enquiry"
             className="mt-6 inline-flex min-h-14 items-center justify-center rounded-xl border border-accent bg-transparent px-9 py-3.5 text-base font-bold tracking-[0.015em] text-accent transition duration-200 hover:-translate-y-0.5 hover:bg-mint hover:text-accent hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink sm:px-10"
           >
-            Ask a question
+            Let&apos;s talk about your project →
           </a>
         </div>
       </div>
